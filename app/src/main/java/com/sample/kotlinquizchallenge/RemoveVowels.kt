@@ -14,5 +14,14 @@ package com.sample.kotlinquizchallenge
 * */
 
 fun main() {
+    println(removeVowels("Hello World"))
+    println(removeVowels("Kotlin Programming"))
+}
 
+fun removeVowels(string: String) : String {
+    val vowels = setOf("a", "e", "i", "o", "u")
+    val charList = string.split("")
+        .filter { it !in vowels }
+
+    return charList.joinToString("")
 }
