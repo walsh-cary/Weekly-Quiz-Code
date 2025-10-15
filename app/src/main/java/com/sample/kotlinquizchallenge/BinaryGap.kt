@@ -15,5 +15,34 @@ package com.sample.kotlinquizchallenge
 * */
 
 fun main() {
+    findBinaryGap(9)
+    findBinaryGap(529)
+    findBinaryGap(32)
+}
 
+fun findBinaryGap(number: Int) {
+    var binaryString = ""
+    var res = number
+
+    while (res > 0) {
+        binaryString = (res % 2).toString() + binaryString
+        res /= 2
+    }
+
+    var longest = 0
+    var current = 0
+
+    binaryString.forEach {
+        if (it == '1') {
+            if (current > longest) {
+                longest = current
+            }
+            current = 0
+        }
+        if (it == '0') {
+            current += 1
+        }
+    }
+
+    println("$number longest gap is $longest")
 }

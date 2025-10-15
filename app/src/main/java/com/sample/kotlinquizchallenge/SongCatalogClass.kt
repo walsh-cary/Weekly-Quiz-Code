@@ -14,5 +14,25 @@ package com.sample.kotlinquizchallenge
 * */
 
 fun main() {
+    val song = Song("Bohemian Rhapsody", "Queen", 2500000, 354)
 
+    println(song.formattedDuration())
+    println(song.isPopular())
+}
+
+data class Song(
+    val name: String,
+    val artist: String,
+    val numberOfPlays: Int,
+    val lengthInSeconds: Int,
+)
+
+fun Song.formattedDuration(): String? {
+    val minutes = (this.lengthInSeconds / 60).toString()
+    val seconds = (this.lengthInSeconds % 60).toString()
+    return "$minutes:$seconds"
+}
+
+fun Song.isPopular(): Boolean {
+    return this.numberOfPlays > 1000000
 }
